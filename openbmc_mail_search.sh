@@ -1,13 +1,12 @@
 #!/bin/bash
 
-#Author: ChicagoDuan
+#Author: ChicagoDuan(duanzhijia01@inspur.com)
 
 searchContent=$1
 
 currentYear=`date +%Y`
 currentMonth=`date +%B`
 
-#declare -a arrayMonth
 arrayMonth=("January" "February" "March" "April" "May" "June" "July" "August" "September" "October" "November" "December")
 
 mkdir openbmc_mail_log 2>> log.txt
