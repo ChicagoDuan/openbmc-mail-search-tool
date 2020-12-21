@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Author: ChicagoDuan(duanzhijia01@inspur.com)
+#Author: ChicagoDuan
 
 searchContent=$1
 
@@ -10,7 +10,7 @@ currentMonth=`date +%B`
 #declare -a arrayMonth
 arrayMonth=("January" "February" "March" "April" "May" "June" "July" "August" "September" "October" "November" "December")
 
-mkdir openbmc_mail_log 2>/dev/null
+mkdir openbmc_mail_log 2>> log.txt
 cd openbmc_mail_log
 
 echo "Start downloading all mails, please wait patiently"
@@ -25,13 +25,15 @@ do
 		fi
 		
 		if [ -f "$i-${arrayMonth[$j]}.txt" ]; then
-			continue
+			if [ "$i-${arrayMonth[$j]}.txt" != "$currentYear-$currentMonth.txt" ]; then
+				continue	
+			fi
 		fi
 
 		wget https://lists.ozlabs.org/pipermail/openbmc/$i-${arrayMonth[$j]}.txt.gz 2>> log.txt
-		gzip -d $i-${arrayMonth[$j]}.txt.gz 2>> log.txt
+		gzip -df $i-${arrayMonth[$j]}.txt.gz 2>> log.txt
 			
-		if [ "$i-${arrayMonth[$j]}.txt" == ""$currentYear-$currentMonth.txt"" ]; then
+		if [ "$i-${arrayMonth[$j]}.txt" == "$currentYear-$currentMonth.txt" ]; then
 			break	
 		fi
 	done
