@@ -9,7 +9,7 @@ currentMonth=`date +%B`
 
 arrayMonth=("January" "February" "March" "April" "May" "June" "July" "August" "September" "October" "November" "December")
 
-mkdir openbmc_mail_log 2>> log.txt
+mkdir openbmc_mail_log 2>>/dev/null
 cd openbmc_mail_log
 
 echo "Start downloading all mails, please wait patiently"
