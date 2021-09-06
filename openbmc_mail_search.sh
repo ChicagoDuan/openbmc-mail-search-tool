@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Author: Chicago Duan(duanzhijia01@inspur.com)
+#Author: ChicagoDuan(duanzhijia01@inspur.com)
 
 searchContent=$1
 
